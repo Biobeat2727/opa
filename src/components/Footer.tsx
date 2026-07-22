@@ -1,11 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { SITE } from "@/lib/site";
-import { Meander } from "./Meander";
 
 export function Footer() {
   return (
-    <footer id="contact" className="mt-auto">
+    <footer id="contact" className="mt-auto border-t border-gold/10">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
         <div className="grid items-center gap-10 sm:grid-cols-[auto_1fr_auto]">
           <Image
@@ -30,18 +29,19 @@ export function Footer() {
           </div>
           <Link
             href="/order"
-            className="mx-auto rounded-sm bg-gold px-7 py-3.5 font-label text-base font-semibold uppercase tracking-widest text-night transition-colors hover:bg-gold-deep sm:mx-0"
+            className="mx-auto rounded-full bg-gold px-8 py-3.5 font-label text-base font-semibold uppercase tracking-widest text-night shadow-[0_8px_30px_-8px_rgba(255,201,7,0.5)] transition-colors hover:bg-gold-soft sm:mx-0"
           >
             Order Online
           </Link>
         </div>
       </div>
-      <Meander />
-      <div className="mx-auto max-w-6xl px-4 py-6 sm:px-6">
-        <p className="text-center text-sm text-cream-dim">
-          © {new Date().getFullYear()} {SITE.name} · Online ordering powered by
-          SpotOn
-        </p>
+      <div className="border-t border-gold/10">
+        <div className="mx-auto max-w-6xl px-4 py-6 sm:px-6">
+          <p className="text-center text-sm text-cream-dim">
+            © {new Date().getFullYear()} {SITE.name} · Online ordering powered
+            by SpotOn
+          </p>
+        </div>
       </div>
     </footer>
   );

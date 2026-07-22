@@ -1,14 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  /* OPA! brand — pulled from the printed menu */
-  --color-night: #18130c;
-  --color-coal: #241e13;
-  --color-coal-edge: #38301f;
+  /* OPA! brand v2 — gold + deep olive-black with warm accents */
+  --color-night: #131007;
+  --color-coal: #1e1810;
+  --color-coal-raised: #262017;
+  --color-coal-edge: #3a3120;
   --color-gold: #ffc907;
   --color-gold-deep: #d6a502;
-  --color-cream: #f2e9d5;
-  --color-cream-dim: #b3a88c;
+  --color-gold-soft: #ffdd66;
+  --color-cream: #f5eedc;
+  --color-cream-dim: #b9ac8b;
+  --color-olive: #a8ad62;
+  --color-flame: #e8582e;
 
   --font-display: var(--font-anton);
   --font-label: var(--font-oswald);
@@ -16,21 +20,57 @@
 }
 
 body {
-  background: var(--color-night);
+  background-color: var(--color-night);
   color: var(--color-cream);
   font-family: var(--font-body);
 }
 
-/* Greek meander (key) pattern — the brand divider */
-.meander {
-  height: 14px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='14' viewBox='0 0 28 14'%3E%3Cpath d='M0 12 H4 V2 H24 V12 H18 V7 H10 V12' fill='none' stroke='%23ffc907' stroke-width='1.6'/%3E%3C/svg%3E");
-  background-repeat: repeat-x;
-  background-size: 28px 14px;
+/* Layered ambient background: warm gradients + gold glows */
+.bg-ambient {
+  background:
+    radial-gradient(1100px 520px at 85% -80px, rgba(255, 201, 7, 0.13), transparent 60%),
+    radial-gradient(900px 500px at -10% 35%, rgba(232, 88, 46, 0.07), transparent 55%),
+    radial-gradient(1000px 600px at 55% 110%, rgba(255, 201, 7, 0.06), transparent 60%),
+    linear-gradient(180deg, #191307 0%, #131007 45%, #17120a 100%);
 }
 
-.meander-dark {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='14' viewBox='0 0 28 14'%3E%3Cpath d='M0 12 H4 V2 H24 V12 H18 V7 H10 V12' fill='none' stroke='%2318130c' stroke-width='1.6'/%3E%3C/svg%3E");
+/* Film grain so large dark areas don't read as flat */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.05'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Soft elevated surface — v2's card language */
+.surface {
+  background: linear-gradient(160deg, var(--color-coal-raised), var(--color-coal));
+  border: 1px solid rgba(255, 201, 7, 0.1);
+  box-shadow:
+    0 1px 0 rgba(255, 235, 170, 0.06) inset,
+    0 12px 32px -16px rgba(0, 0, 0, 0.7);
+}
+
+/* Location marquee */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 22s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
 }
 
 html {

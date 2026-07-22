@@ -1,53 +1,103 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { SITE } from "@/lib/site";
+import { motion, useReducedMotion } from "framer-motion";
+import { SITE, HERO_PHOTOS } from "@/lib/site";
+import { PhotoSlot } from "./PhotoPlaceholder";
+
+const EASE = [0.21, 0.61, 0.35, 1] as const;
 
 export function Hero() {
+  const reduce = useReducedMotion();
+
+  const rise = (delay: number) => ({
+    initial: { opacity: 0, y: reduce ? 0 : 26 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6, delay, ease: EASE },
+  });
+
   return (
     <section className="relative overflow-hidden pt-16">
-      <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[1.2fr_1fr] lg:py-24">
-        <div>
-          <p className="font-label text-sm uppercase tracking-[0.35em] text-gold">
-            {SITE.homeBase} · Food Truck
-          </p>
-          <h1 className="mt-4 font-display text-5xl uppercase leading-[0.95] text-cream sm:text-7xl lg:text-8xl">
-            Authentic
-            <br />
-            Gyros<span className="text-gold">.</span>
-          </h1>
-          <p className="mt-4 font-label text-xl uppercase tracking-[0.2em] text-gold sm:text-2xl">
-            Fresh · Made to Order
-          </p>
-          <p className="mt-6 max-w-md text-lg text-cream-dim">
-            Warm pita, slow-seasoned meats, hand-cut vegetables and real feta —
-            wrapped up and handed to you out the truck window.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Link
-              href="/order"
-              className="rounded-sm bg-gold px-7 py-3.5 font-label text-base font-semibold uppercase tracking-widest text-night transition-colors hover:bg-gold-deep"
-            >
-              Order Online
-            </Link>
-            <Link
-              href="/#menu"
-              className="rounded-sm border border-gold/50 px-7 py-3.5 font-label text-base uppercase tracking-widest text-gold transition-colors hover:border-gold hover:bg-gold/10"
-            >
-              See the Menu
-            </Link>
-          </div>
-        </div>
-
-        <div className="relative mx-auto w-56 sm:w-72 lg:w-full lg:max-w-sm">
+      <div className="mx-auto flex max-w-5xl flex-col items-center px-4 pt-12 text-center sm:px-6 sm:pt-16">
+        <motion.div {...rise(0)}>
           <Image
             src="/opa-logo.png"
             alt="OPA! Greek Food olive tree logo"
             width={862}
             height={1000}
             priority
-            className="h-auto w-full drop-shadow-[0_0_60px_rgba(255,201,7,0.15)]"
+            className="h-auto w-32 drop-shadow-[0_0_50px_rgba(255,201,7,0.25)] sm:w-40"
           />
-        </div>
+        </motion.div>
+
+        <motion.p
+          {...rise(0.1)}
+          className="mt-6 font-label text-sm uppercase tracking-[0.35em] text-gold"
+        >
+          {SITE.homeBase} · Food Truck
+        </motion.p>
+
+        <motion.h1
+          {...rise(0.18)}
+          className="mt-3 font-display text-5xl uppercase leading-[0.95] text-cream sm:text-7xl lg:text-8xl"
+        >
+          Authentic Gyros<span className="text-gold">.</span>
+          <br />
+          <span className="text-gold">Fresh. Made to order.</span>
+        </motion.h1>
+
+        <motion.p
+          {...rise(0.26)}
+          className="mt-6 max-w-xl text-lg text-cream-dim"
+        >
+          Warm pita, slow-seasoned meats, hand-cut vegetables and real feta —
+          wrapped up and handed to you out the truck window.
+        </motion.p>
+
+        <motion.div
+          {...rise(0.34)}
+          className="mt-8 flex flex-wrap justify-center gap-4"
+        >
+          <Link
+            href="/order"
+            className="rounded-full bg-gold px-8 py-3.5 font-label text-base font-semibold uppercase tracking-widest text-night shadow-[0_8px_30px_-8px_rgba(255,201,7,0.5)] transition-colors hover:bg-gold-soft"
+          >
+            Order Online
+          </Link>
+          <Link
+            href="/#menu"
+            className="rounded-full border border-gold/40 px-8 py-3.5 font-label text-base uppercase tracking-widest text-gold transition-colors hover:border-gold hover:bg-gold/10"
+          >
+            See the Menu
+          </Link>
+        </motion.div>
+      </div>
+
+      {/* Fanned photo cards — the hero's photo slots */}
+      <div className="mx-auto mt-14 grid max-w-4xl grid-cols-3 items-end gap-4 px-4 pb-10 sm:gap-6 sm:px-6">
+        {HERO_PHOTOS.map((photo, i) => (
+          <motion.div
+            key={photo.alt}
+            initial={{
+              opacity: 0,
+              y: reduce ? 0 : 40,
+              rotate: reduce ? 0 : 0,
+            }}
+            animate={{ opacity: 1, y: 0, rotate: [-4, 0, 4][i] }}
+            transition={{ duration: 0.7, delay: 0.45 + i * 0.12, ease: EASE }}
+            whileHover={reduce ? undefined : { y: -10, rotate: 0 }}
+            className={i === 1 ? "z-10" : "mb-[-8px]"}
+          >
+            <PhotoSlot
+              alt={photo.alt}
+              kind={photo.kind}
+              src={photo.image}
+              sizes="(max-width: 640px) 33vw, 300px"
+              className="aspect-[4/5] rounded-2xl surface"
+            />
+          </motion.div>
+        ))}
       </div>
     </section>
   );

@@ -62,6 +62,14 @@ Old posts don't need to be deleted — the site figures out the current spot fro
 - SpotOn currently allows iframe embedding (no `X-Frame-Options` / `frame-ancestors`). If they ever start blocking it, `/order` has a built-in "open in a new tab" fallback link in the header, and you could switch the Order buttons to link straight to `SITE.orderUrl`.
 - Menu prices are intentionally not on the site — the ordering page is the source of truth.
 
+## Adding food photos
+
+Every photo slot on the site (hero cards, menu cards, about section) shows a styled gold line-art tile until a real photo is added. To swap one in:
+
+1. Drop the image in `public/menu/` (or `public/hero/`, `public/`) — landscape ~1200px wide, JPG/WebP.
+2. In [src/lib/site.ts](src/lib/site.ts), set the `image` field on the matching item, e.g. `image: "/menu/traditional-gyro.jpg"` on the Traditional Gyro entry (hero slots and the about photo live in the same file as `HERO_PHOTOS` / `ABOUT_PHOTO`).
+3. Commit and push — Vercel redeploys automatically.
+
 ## Assets
 
 - `assets/opa-logo.pdf` — original vector logo. `public/opa-logo.png` (web) and `src/app/icon.png` (favicon) were rendered from it.

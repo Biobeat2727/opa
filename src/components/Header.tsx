@@ -9,7 +9,7 @@ const NAV = [
 
 export function Header() {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-coal-edge bg-night/90 backdrop-blur">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-gold/10 bg-night/85 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
         <Link href="/" className="flex items-center gap-3">
           <Image
@@ -38,7 +38,7 @@ export function Header() {
           ))}
           <Link
             href="/order"
-            className="rounded-sm bg-gold px-4 py-2 font-label text-sm font-semibold uppercase tracking-widest text-night transition-colors hover:bg-gold-deep"
+            className="rounded-full bg-gold px-5 py-2 font-label text-sm font-semibold uppercase tracking-widest text-night transition-colors hover:bg-gold-soft"
           >
             Order Now
           </Link>
