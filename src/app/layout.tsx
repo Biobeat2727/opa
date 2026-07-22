@@ -19,12 +19,15 @@ const figtree = Figtree({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.opafoodtruck.com"),
   title: "OPA! Greek Food — Authentic Gyros Food Truck in Ponderay, ID",
   description:
     "Authentic gyros, fresh and made to order. Find the OPA! Greek Food truck in the Ponderay / Sandpoint area, see the menu, and order online to skip the line.",
   openGraph: {
     title: "OPA! Greek Food",
     description: "Authentic gyros · fresh · made to order. Ponderay, Idaho.",
+    url: "https://www.opafoodtruck.com",
+    siteName: "OPA! Greek Food",
     type: "website",
   },
 };
