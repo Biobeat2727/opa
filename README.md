@@ -58,8 +58,9 @@ Old posts don't need to be deleted — the site figures out the current spot fro
 
 ## SpotOn ordering notes
 
-- The embed URL lives in [src/lib/site.ts](src/lib/site.ts) (`SITE.orderUrl`).
-- SpotOn currently allows iframe embedding (no `X-Frame-Options` / `frame-ancestors`). If they ever start blocking it, `/order` has a built-in "open in a new tab" fallback link in the header, and you could switch the Order buttons to link straight to `SITE.orderUrl`.
+- The ordering URL lives in [src/lib/site.ts](src/lib/site.ts) (`SITE.orderUrl`).
+- `/order` is a **branded hand-off**, not an embed: it shows the live pickup location (from Sanity) and links out to SpotOn in a new tab. We tried iframing the SpotOn menu, but SpotOn's CloudFront/WAF returns a raw `403` to embedded (and heavily-hit) requests — embedding isn't their supported integration. Because a cross-origin iframe is opaque to our JavaScript, we can't detect that failure to fall back gracefully, so linking out is the reliable choice.
+- **To restore an inline embed:** if SpotOn whitelists `opafoodtruck.com` for framing or gives you an official embed widget, drop an `<iframe src={SITE.orderUrl}>` back into [src/app/order/page.tsx](src/app/order/page.tsx).
 - Menu prices are intentionally not on the site — the ordering page is the source of truth.
 
 ## Adding food photos
