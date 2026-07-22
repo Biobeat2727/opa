@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { OrderLink } from "./OrderLink";
 
 const NAV = [
   { href: "/#menu", label: "Menu" },
@@ -36,12 +37,9 @@ export function Header() {
               {item.label}
             </Link>
           ))}
-          <Link
-            href="/order"
-            className="rounded-full bg-gold px-5 py-2 font-label text-sm font-semibold uppercase tracking-widest text-night transition-colors hover:bg-gold-soft"
-          >
+          <OrderLink className="rounded-full bg-gold px-5 py-2 font-label text-sm font-semibold uppercase tracking-widest text-night transition-colors hover:bg-gold-soft">
             Order Now
-          </Link>
+          </OrderLink>
         </nav>
       </div>
     </header>

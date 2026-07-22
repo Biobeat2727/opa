@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { SITE, HERO_PHOTOS } from "@/lib/site";
 import { PhotoSlot } from "./PhotoPlaceholder";
+import { OrderLink } from "./OrderLink";
 
 const EASE = [0.21, 0.61, 0.35, 1] as const;
 
@@ -59,12 +60,9 @@ export function Hero() {
           {...rise(0.34)}
           className="mt-8 flex flex-wrap justify-center gap-4"
         >
-          <Link
-            href="/order"
-            className="rounded-full bg-gold px-8 py-3.5 font-label text-base font-semibold uppercase tracking-widest text-night shadow-[0_8px_30px_-8px_rgba(255,201,7,0.5)] transition-colors hover:bg-gold-soft"
-          >
+          <OrderLink className="rounded-full bg-gold px-8 py-3.5 font-label text-base font-semibold uppercase tracking-widest text-night shadow-[0_8px_30px_-8px_rgba(255,201,7,0.5)] transition-colors hover:bg-gold-soft">
             Order Online
-          </Link>
+          </OrderLink>
           <Link
             href="/#menu"
             className="rounded-full border border-gold/40 px-8 py-3.5 font-label text-base uppercase tracking-widest text-gold transition-colors hover:border-gold hover:bg-gold/10"

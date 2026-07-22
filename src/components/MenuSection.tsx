@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { MENU } from "@/lib/site";
+import { OrderLink } from "./OrderLink";
 import { FadeUp, Stagger, StaggerItem, HoverLift } from "./motion";
 import { PhotoSlot } from "./PhotoPlaceholder";
 
@@ -73,12 +73,9 @@ export function MenuSection() {
 
       <FadeUp className="mt-14">
         <div className="flex flex-wrap items-center gap-4">
-          <Link
-            href="/order"
-            className="rounded-full bg-gold px-8 py-3.5 font-label text-base font-semibold uppercase tracking-widest text-night shadow-[0_8px_30px_-8px_rgba(255,201,7,0.5)] transition-colors hover:bg-gold-soft"
-          >
+          <OrderLink className="rounded-full bg-gold px-8 py-3.5 font-label text-base font-semibold uppercase tracking-widest text-night shadow-[0_8px_30px_-8px_rgba(255,201,7,0.5)] transition-colors hover:bg-gold-soft">
             Order Online &amp; Skip the Line
-          </Link>
+          </OrderLink>
           <p className="text-cream-dim">Current prices are on the ordering page.</p>
         </div>
       </FadeUp>

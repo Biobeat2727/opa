@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 import { SITE } from "@/lib/site";
+import { OrderLink } from "./OrderLink";
 
 export function Footer() {
   return (
@@ -27,12 +27,9 @@ export function Footer() {
             </a>
             <p className="mt-2 text-cream-dim">{SITE.homeBase}</p>
           </div>
-          <Link
-            href="/order"
-            className="mx-auto rounded-full bg-gold px-8 py-3.5 font-label text-base font-semibold uppercase tracking-widest text-night shadow-[0_8px_30px_-8px_rgba(255,201,7,0.5)] transition-colors hover:bg-gold-soft sm:mx-0"
-          >
+          <OrderLink className="mx-auto rounded-full bg-gold px-8 py-3.5 font-label text-base font-semibold uppercase tracking-widest text-night shadow-[0_8px_30px_-8px_rgba(255,201,7,0.5)] transition-colors hover:bg-gold-soft sm:mx-0">
             Order Online
-          </Link>
+          </OrderLink>
         </div>
       </div>
       <div className="border-t border-gold/10">
