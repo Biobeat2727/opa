@@ -73,7 +73,7 @@ export const MENU: MenuSection[] = [
     items: [
       {
         name: "Greek Fries",
-        description: "Feta, oregano & lemon",
+        description: "Kalamata olives, feta, pepperoncinis & tzatziki",
         tag: "side",
         kind: "fries",
         image: "/menu/greek-fries.jpg",
