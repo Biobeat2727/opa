@@ -32,17 +32,20 @@ export const MENU: MenuSection[] = [
         name: "Traditional Gyro",
         description: "Seasoned lamb & beef",
         kind: "wrap",
+        image: "/menu/traditional-gyro.jpg",
       },
       {
         name: "Chicken Gyro",
         description: "Grilled lemon-garlic chicken",
         kind: "wrap",
+        image: "/menu/chicken-gyro.jpg",
       },
       {
         name: "Falafel",
         description: "Crispy fried chickpea",
         tag: "vegetarian",
         kind: "wrap",
+        image: "/menu/falafel.jpg",
       },
     ],
   },
@@ -54,12 +57,14 @@ export const MENU: MenuSection[] = [
         description:
           "Lemon-garlic hummus, carrots, feta, olives, pickled onion, cucumber, tomato & warm pita",
         kind: "plate",
+        image: "/menu/hummus-plate.jpg",
       },
       {
         name: "Greek Salad",
         description:
           "Romaine, tomato, cucumber, red onion, olives, feta & Greek vinaigrette",
         kind: "salad",
+        image: "/menu/greek-salad.jpg",
       },
     ],
   },
@@ -71,12 +76,14 @@ export const MENU: MenuSection[] = [
         description: "Feta, oregano & lemon",
         tag: "side",
         kind: "fries",
+        image: "/menu/greek-fries.jpg",
       },
       {
         name: "Baklava",
         description: "Filo, cinnamon, sugar & walnuts",
         tag: "sweet",
         kind: "sweet",
+        image: "/menu/baklava.jpg",
       },
     ],
   },
@@ -84,13 +91,22 @@ export const MENU: MenuSection[] = [
 
 /** The three hero cards. Add photos: drop files in public/hero/ and set image paths. */
 export const HERO_PHOTOS: { alt: string; kind: PhotoKind; image?: string }[] = [
-  { alt: "A traditional gyro wrapped in warm pita", kind: "wrap" },
-  { alt: "The OPA! food truck", kind: "truck" },
-  { alt: "A loaded hummus plate", kind: "plate" },
+  {
+    alt: "A traditional gyro wrapped in warm pita",
+    kind: "wrap",
+    image: "/menu/traditional-gyro.jpg",
+  },
+  { alt: "The OPA! food truck", kind: "truck", image: "/truck.jpg" },
+  {
+    alt: "A loaded hummus plate",
+    kind: "plate",
+    image: "/menu/hummus-plate.jpg",
+  },
 ];
 
 /** About-section photo. Drop a file in public/ and set the path. */
 export const ABOUT_PHOTO: { alt: string; kind: PhotoKind; image?: string } = {
-  alt: "Serving customers from the OPA! truck window",
+  alt: "The OPA! Greek Food truck",
   kind: "truck",
+  image: "/truck.jpg",
 };
